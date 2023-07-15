@@ -1,13 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
+const serverless = require("serverless-http");
 
 port  = 3000;
 
 const app = express(); 
+const router = express.Router();
+
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use('/.netlify/functions/api',router);
+module.exports.handler = serverless(app);
 
 const https = require("https");
 const json = require("body-parser/lib/types/json");
@@ -38,7 +44,7 @@ app.post("/",function(req,res){
     const url = "https://us21.api.mailchimp.com/3.0/lists/dc00c35904";         //us21 because our api key ends with us21 //note that we have entered our audience key
     const options = {
           method: "POST",
-          auth: "paiaditya:ba14a280 4f0e7f10174b9250c0d493ec-us21" 
+          auth: "paiaditya:ce6c6ca2e70c582261ef71c28717f88d-us21" 
     }
     
     const request = https.request(url,options,function(response){
@@ -67,7 +73,7 @@ app.post("/failure",function(req,res){
     res.redirect("/");
 })
 
-app.listen(3000,function(){
+app.listen(process.env.port || 3000,function(){
     console.log("the server is up and running on port 3000");
 });
 
