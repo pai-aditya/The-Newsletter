@@ -44,7 +44,7 @@ app.post("/",function(req,res){
     const url = "https://us21.api.mailchimp.com/3.0/lists/dc00c35904";         //us21 because our api key ends with us21 //note that we have entered our audience key
     const options = {
           method: "POST",
-          auth: "paiaditya:ce6c6ca2e70c582261ef71c28717f88d-us21" 
+          auth: "paiaditya:056665facbdae615231b7d3afba43e0c-us21" 
     }
     
     const request = https.request(url,options,function(response){
@@ -78,5 +78,5 @@ app.listen(process.env.port || 3000,function(){
 });
 
 
-//ba14a2804f0e7f10174b9250c0d493ec-us21
+// 056665facbdae615231b7d3afba43e0c-us21
 // audience id = dc00c35904
