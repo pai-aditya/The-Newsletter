@@ -19,7 +19,7 @@ const https = require("https");
 const json = require("body-parser/lib/types/json");
 
 app.get("/",function(req,res){
-    res.sendFile(__dirname+"/index.html");
+    res.sendFile(__dirname+"/public/index.html");
 });
 
 app.post("/",function(req,res){
@@ -51,12 +51,12 @@ app.post("/",function(req,res){
 
         if(response.statusCode==200){
             // res.send("Successfully subscribed!");
-            res.sendFile(__dirname+"/success.html");
+            res.sendFile(__dirname+"/public/success.html");
         }
         else{
             // res.send("There was a error in signing up, please try again!")
 
-            res.sendFile(__dirname+"/failure.html");
+            res.sendFile(__dirname+"/public/failure.html");
         }
         response.on("data",function(data){
             console.log(JSON.parse(data));
