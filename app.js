@@ -12,7 +12,7 @@ const router = express.Router();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/.netlify/functions/api',router);
+app.use('/.netlify/functions/app',router);
 module.exports.handler = serverless(app);
 
 const https = require("https");
@@ -44,7 +44,7 @@ app.post("/",function(req,res){
     const url = "https://us21.api.mailchimp.com/3.0/lists/dc00c35904";         //us21 because our api key ends with us21 //note that we have entered our audience key
     const options = {
           method: "POST",
-          auth: "paiaditya:056665facbdae615231b7d3afba43e0c-us21" 
+          auth: "paiaditya:2b66fd64bd19d9565340969ffd7aef21-us21" 
     }
     
     const request = https.request(url,options,function(response){
